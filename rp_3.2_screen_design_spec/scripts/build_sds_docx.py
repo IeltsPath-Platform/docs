@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 from docx_blocks import SdsDocument  # noqa: E402
-from export_diagrams import export_name  # noqa: E402
+from export_diagrams import export_name, png_path  # noqa: E402
 import sds_content_general as G  # noqa: E402
 from sds_content_screens import SPECS  # noqa: E402
 from sds_screens import SCREENS, GROUPS, FLOWS, spec_screens  # noqa: E402
@@ -25,13 +25,13 @@ TEMPLATE = os.path.join(FRONTEND, "Report 3.2_ScreenDesignSpec_Template.docx")
 EXPORTS = os.path.join(ROOT, "diagrams", "exports")
 OUT = os.path.join(ROOT, f"Report_3.2_ScreenDesignSpec_{G.VERSION}.docx")
 PUBLISHED = os.path.join(FRONTEND, "Report_3.2_ScreenDesignSpec.docx")
-WIRE = "diagrams/wireframes/"
+WIRE = "wireframes/screens/"  # docs/wireframes, shared with the FDS
 
 missing = []
 
 
 def png(name):
-    path = os.path.join(EXPORTS, name)
+    path = png_path(name)
     if not os.path.exists(path):
         missing.append(name)
     return path

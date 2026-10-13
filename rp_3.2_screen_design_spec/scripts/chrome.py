@@ -13,6 +13,7 @@ SUBNAV = {
     "Sổ từ vựng": ["Flashcard của tôi", "Kho từ vựng", "Bài mẫu 8đ"],
 }
 NAV_H = 72
+CURRENT = "#F97316"  # orange underline of the current menu item (frontend sub-menu style)
 # Mobile frames are out of scope for this SDS revision (desktop web first). Set True to draw them again.
 INCLUDE_MOBILE = False
 SUB_H = 44
@@ -29,6 +30,7 @@ def navbar(p, role="learner", active=None, child=None, ox=0, oy=0, w=DESKTOP_W, 
         lw = int(len(label) * 8.6) + 36
         if label == active:
             p.rect(x, oy + 16, lw, 40, fill="#FFFFFF", stroke="#FFFFFF", r=20, value=label, color=PRIMARY, bold=True, size=15)
+            p.rect(x + 14, oy + 60, lw - 28, 4, fill=CURRENT, stroke=CURRENT, r=2)
         else:
             p.text(x, oy + 16, lw, 40, label, size=15, color="#FFFFFF", align="center")
         x += lw + 10
@@ -46,7 +48,8 @@ def navbar(p, role="learner", active=None, child=None, ox=0, oy=0, w=DESKTOP_W, 
         for label in SUBNAV[key]:
             lw = int(len(label) * 8) + 30
             if label == child:
-                p.text(cx, y + 6, lw, 32, f"<b><u>{label}</u></b>", size=14, color=PRIMARY, align="center")
+                p.text(cx, y + 6, lw, 32, f"<b>{label}</b>", size=14, color=PRIMARY, align="center")
+                p.rect(cx + 8, y + 38, lw - 16, 4, fill=CURRENT, stroke=CURRENT, r=2)
             else:
                 p.text(cx, y + 6, lw, 32, label, size=14, color=INK, align="center")
             cx += lw + 12

@@ -1,6 +1,6 @@
 """Clickable desktop prototype: every wireframe frame in one draw.io file, buttons linked to their target frames.
 
-Open diagrams/IELTSSpace_SDS_Prototype.drawio (draw.io Desktop or viewer.diagrams.net) and click a button:
+Open docs/wireframes/IELTSPath_Prototype.drawio (draw.io Desktop or viewer.diagrams.net) and click a button:
 draw.io jumps to the linked tab. The first tab is an index; every frame title links back to it.
 
 Links follow the Key Interactions in Part 4 (sds_content_screens.py). Matching is on the visible text of a shape:
@@ -17,14 +17,14 @@ INDEX = "INDEX / Prototype"
 
 # Navbar / subnav links, applied only to shapes inside the navbar band (y < 120) of every frame.
 NAV = {
-    "IELTS Space logo": "P-10 / Populated · Learner", "!Trang chủ": "P-10 / Populated · Learner",
+    "IELTS Space logo": "P-11 / Tổng quát", "!Trang chủ": "P-11 / Tổng quát",
     "!Khóa học": "P-30 / Populated", "!Khóa học của tôi": "P-30 / Populated",
     "!Test đầu vào 4 kỹ năng FREE": "P-30a / Survey",
     "!Luyện tập 4 kỹ năng": "P-41 / Populated", "!Listening": "P-41 / Populated", "!Reading": "P-41 / Populated",
     "!Writing": "P-41 / Populated", "!Speaking": "P-41 / Populated",
-    "!Sổ từ vựng": "P-92 / Populated", "!Flashcard của tôi": "P-92 / Populated", "!Kho từ vựng": "P-92 / Populated",
+    "!Sổ từ vựng": "P-50 / Populated", "!Flashcard của tôi": "P-92 / Populated", "!Kho từ vựng": "P-50 / Populated",
     "!Bài mẫu 8đ": "P-92 / Populated", "!Bài mẫu Writing 8.0+": "P-92 / Populated", "!Kết quả học viên": "P-92 / Populated",
-    "!Dashboard": "P-92 / Populated", "!Lịch sử nộp bài": "P-92 / Populated",
+    "!Dashboard": "P-11 / Tổng quát", "!Lịch sử nộp bài": "P-92 / Populated",
     "◯ Học viên · 30 Points ▾": "SHELL / User Menu",
     "Đăng nhập": "P-01 / Populated", "Đăng ký": "P-02 / Populated",
 }
@@ -38,6 +38,12 @@ P01 = {"Đăng nhập": "P-30 / Populated", "Quên mật khẩu?": "P-03 / Popul
        "Chưa có tài khoản? Đăng ký ngay": "P-02 / Populated"}
 P04 = {"Chưa có mã? Yêu cầu lại · Đăng nhập": "P-01 / Populated"}
 BACK_P31 = "← Khóa IELTS Band 6.0"
+P11_SIDEBAR = {"!▦ Tổng quát": "P-11 / Tổng quát", "!▥ Dữ liệu chi tiết": "P-11 / Dữ liệu chi tiết",
+               "!◷ Lịch sử ôn luyện": "P-11 / Tab chưa xây dựng", "!◯ Hồ sơ của tôi": "P-11 / Tab chưa xây dựng",
+               "!♕ Xếp hạng": "P-11 / Tab chưa xây dựng"}
+P21_SIDEBAR = {"Slide bài giảng": "P-21 / Tài liệu buổi học", "Lesson Summary": "P-21 / Tài liệu buổi học",
+               "Từ vựng buổi học": "P-21 / Homework — Từ vựng", "Từ vựng": "P-21 / Homework — Từ vựng",
+               "Ngữ pháp": "P-21 / Homework — Ngữ pháp", "Quick Test tổng hợp": "P-21 / Homework — Ngữ pháp"}
 LINKS = {
     "P-01 / Populated": P01, "P-01 / Loading": {"Đang xử lý…": "P-30 / Populated", "Quên mật khẩu?": "P-03 / Populated", "Chưa có tài khoản? Đăng ký ngay": "P-02 / Populated"}, "P-01 / Error": P01,
     "P-02 / Populated": {"Tạo tài khoản": "P-30 / Populated", "Đã có tài khoản? Đăng nhập": "P-01 / Populated"},
@@ -112,14 +118,26 @@ LINKS = {
     "P-43 / Populated": {"← Thoát": "P-41 / Populated"},
     "P-44 / Populated": {"← Thoát": "P-41 / Populated", "⤢ Phóng to biểu đồ": "P-44a / Populated"},
     "P-44a / Populated": {"✕": "P-44 / Populated"},
-    "P-90 / Populated": {"Về Overview": INDEX},
+    "P-11 / Tổng quát": dict(P11_SIDEBAR, **{"Tiếp tục học ▶": "P-41 / Populated", "Bắt đầu học ngay": "P-41 / Populated",
+                                              "▶ Bắt đầu ngay": "P-41 / Populated"}),
+    "P-11 / Dữ liệu chi tiết": P11_SIDEBAR,
+    "P-11 / Tab chưa xây dựng": dict(P11_SIDEBAR, **{"Quay về Overview": "P-11 / Tổng quát"}),
+    "P-32 / Writing Feedback — Chưa đạt": {"← Writing Task 1 — Line Graph": "P-31 / Populated",
+                                          "Nộp bài · 3 điểm": "P-32 / Writing Feedback — Đã đạt"},
+    "P-32 / Writing Feedback — Đã đạt": {"← Writing Task 1 — Line Graph": "P-31 / Populated",
+                                        "Bài tiếp theo →": "P-32 / Populated"},
+    "P-20 / Populated": {"!Bài 1: Nature & Environment": "P-20a / Populated", "!▶ Vào lớp ngay!": "P-20a / Populated",
+                         "● Join class! Vào lớp ngay": "P-21 / Tài liệu buổi học"},
+    "P-20a / Populated": {"✕": "P-20 / Populated", "▶ Vào lớp ngay!": "P-21 / Tài liệu buổi học"},
+    "P-21 / Tài liệu buổi học": P21_SIDEBAR, "P-21 / Homework — Ngữ pháp": P21_SIDEBAR, "P-21 / Homework — Từ vựng": P21_SIDEBAR,
+    "P-90 / Populated": {"Về Overview": "P-11 / Tổng quát"},
     "P-91 / Populated": {"Về lộ trình": "P-30 / Populated"},
-    "P-92 / Populated": {"Về Overview": INDEX, "Đến lớp học": INDEX},
+    "P-92 / Populated": {"Về Overview": "P-11 / Tổng quát", "Đến lớp học": "P-20 / Populated"},
     "SHELL / User Menu": {"Đăng xuất": "P-01 / Populated", "Chuyển sang Premium (demo)": "SHELL / User Menu"},
 }
 
 START = [("▶ Start as Guest — Home", "P-10 / Populated"), ("▶ Start as Guest — Sign in", "P-01 / Populated"),
-         ("▶ Start as Learner — Course List", "P-30 / Populated"), ("▶ Placement test", "P-30a / Survey"),
+         ("▶ Learner — Dashboard", "P-11 / Tổng quát"), ("▶ Start as Learner — Course List", "P-30 / Populated"), ("▶ Placement test", "P-30a / Survey"),
          ("▶ Practice catalog", "P-41 / Populated")]
 
 
@@ -157,7 +175,7 @@ def apply_links(page, names):
                 n = used.get(key, 0)
                 used[key] = n + 1
                 target = target[n] if n < len(target) else None
-            if scope == "nav" and target == "P-10 / Populated · Learner" and not learner:
+            if scope == "nav" and target == "P-11 / Tổng quát" and not learner:
                 target = GUEST_HOME
             if target:
                 if target not in names:
@@ -174,9 +192,9 @@ def apply_links(page, names):
 
 def index_page(names):
     p = Page(INDEX)
-    p.text(0, 0, 1500, 40, "<b>IELTS Space — Clickable Desktop Prototype</b>", size=28)
+    p.text(0, 0, 1500, 40, "<b>IELTSPath — Clickable Desktop Prototype (SDS + FDS)</b>", size=28)
     p.text(0, 46, 1500, 44, "Click a box to open a frame. Inside a frame, click buttons / links to move between screens; "
-           "click the frame title (top-left) to come back here. Generated from the SDS wireframes (Report 3.2 v0.4.0).", size=14, color=MUTED)
+           "click the frame title (top-left) to come back here. The current menu item is underlined in orange. Shared by the Screen Design Spec and the FDS.", size=14, color=MUTED)
     for i, (label, target) in enumerate(START):
         cid = p.rect(i * 300, 110, 280, 48, fill=PRIMARY, stroke=PRIMARY, r=10, value=label, color="#FFFFFF", bold=True, size=14)
         p.vertices()[-1]["link"] = page_id(target)

@@ -105,7 +105,7 @@ def build_system(new):
 
     f = new("P-91_LearnNotFound")
     p = screen(f, "P-91", "Populated", "Learning Path — Not Found", h=700)
-    y = navbar(p, role="learner", active="Khóa học")
+    y = navbar(p, role="learner", active="Khóa học", child="Khóa học")
     p.card(470, y + 80, 500, 300, r=18)
     p.zone(457, y + 100, "A")
     p.text(470, y + 110, 500, 36, "📄", size=26, align="center")
