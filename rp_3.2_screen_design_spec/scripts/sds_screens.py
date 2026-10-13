@@ -12,7 +12,7 @@ from collections import namedtuple
 
 Screen = namedtuple("Screen", "pid name group route roles level status ft sc flows section drawio frames")
 
-DRAWIO_DIR = "frontend/docs/report-3.2-sds/diagrams/wireframes"
+DRAWIO_DIR = "docs/wireframes/screens"  # shared with the FDS
 
 
 def S(pid, name, group, route, roles, level, status, ft="—", sc="—", flows="—", section="—", drawio=None, frames=()):
@@ -37,11 +37,15 @@ SCREENS = [
     S("P-10b", "Plan Detail", "Home", "— (former modal)", "Guest, Learner", "MODAL", "Retired"),
     S("P-10c", "Key Activation Dialog", "Home", "Modal on P-10", "Guest, Learner", "MODAL", "MVP", "FT-11, FT-12", "SC-06", "F-04", "4.6",
       "P-10c_KeyActivation.drawio", ["Populated"]),
-    S("P-11", "Overview Dashboard", "Overview & Classroom", "/overview  (/ → /overview for Learner)", "Learner", "PRIMARY", "Later*", "FT-44, FT-45", "SC-02"),
+    S("P-11", "Overview Dashboard", "Overview & Classroom", "/overview  (/ → /overview for Learner)", "Learner", "PRIMARY", "Later*", "FT-44, FT-45", "SC-02",
+      drawio="P-11_OverviewDashboard.drawio", frames=["Tổng quát", "Dữ liệu chi tiết", "Tab chưa xây dựng"]),
     # ---- Classroom
-    S("P-20", "My Classroom", "Overview & Classroom", "/classroom", "Learner", "PRIMARY", "Later*"),
-    S("P-20a", "Lesson Detail", "Overview & Classroom", "Modal on P-20", "Learner", "MODAL", "Later*"),
-    S("P-21", "Lesson Workspace", "Overview & Classroom", "/lessons/:lessonId", "Learner", "DEEP", "Later*"),
+    S("P-20", "My Classroom", "Overview & Classroom", "/classroom", "Learner", "PRIMARY", "Later*",
+      drawio="P-20_MyClassroom.drawio", frames=["Populated"]),
+    S("P-20a", "Lesson Detail", "Overview & Classroom", "Modal on P-20", "Learner", "MODAL", "Later*",
+      drawio="P-20a_LessonDetail.drawio", frames=["Populated"]),
+    S("P-21", "Lesson Workspace", "Overview & Classroom", "/lessons/:lessonId", "Learner", "DEEP", "Later*",
+      drawio="P-21_LessonWorkspace.drawio", frames=["Tài liệu buổi học", "Homework — Ngữ pháp", "Homework — Từ vựng"]),
     S("P-22", "Join Live Class", "Overview & Classroom", "/classes/:classCode/join", "Guest, Learner", "SUB", "Stub"),
     S("P-23", "Contact Mentor", "Overview & Classroom", "/mentors/:mentorSlug", "Guest, Learner", "SUB", "Stub"),
     # ---- Learning path (course-based)
@@ -55,7 +59,8 @@ SCREENS = [
     S("P-31", "Topic Detail", "Learning Path", "/learn/topics/:topicId", "Learner", "SUB", "MVP", "FT-21, FT-29", "SC-02, SC-05", "F-02", "4.10",
       "P-31_TopicDetail.drawio", ["Populated", "Locked Test / Review Gate"]),
     S("P-32", "Lesson Player", "Learning Path", "/learn/lessons/:lessonId", "Learner", "DEEP", "MVP", "FT-21, FT-22, FT-23, FT-25", "SC-02, SC-04", "F-02", "4.11",
-      "P-32_LessonPlayer.drawio", ["Populated", "Completed", "Review Required"]),
+      "P-32_LessonPlayer.drawio", ["Populated", "Completed", "Review Required", "Writing Feedback — Chưa đạt",
+                                    "Writing Feedback — Đã đạt"]),
     S("P-33", "Lesson Practice", "Learning Path", "/learn/lessons/:lessonId/practice", "Learner", "DEEP", "MVP", "FT-27", "SC-03, SC-04", "F-02", "4.12",
       "P-33_LessonPractice.drawio", ["Set List", "Attempt", "Outcome"]),
     S("P-34", "Review Session", "Learning Path", "/learn/reviews/:reviewId", "Learner", "DEEP", "MVP", "FT-26, FT-28", "SC-03", "F-02", "4.13",
@@ -88,7 +93,8 @@ SCREENS = [
       "P-44a_WritingChartZoom.drawio", ["Populated"]),
     S("P-45", "Speaking Practice", "Practice", "/practice/speaking/:cueId", "Learner", "DEEP", "Later*", "FT-39", "SC-08", "F-03"),
     # ---- Vocabulary & personal
-    S("P-50", "Vocabulary / Dictionary", "Vocabulary & Personal", "/vocabulary", "Guest, Learner", "PRIMARY", "Later*", "FT-36", "SC-08"),
+    S("P-50", "Vocabulary / Dictionary", "Vocabulary & Personal", "/vocabulary", "Guest, Learner", "PRIMARY", "Later*", "FT-36", "SC-08",
+      drawio="P-50_Vocabulary.drawio", frames=["Populated", "Empty search"]),
     S("P-51", "My Flashcards", "Vocabulary & Personal", "/flashcards", "Learner", "SUB", "Stub", "FT-43", "SC-08"),
     S("P-52", "Writing 8.0+ Samples", "Vocabulary & Personal", "/writing-samples", "Learner", "PRIMARY", "Stub"),
     S("P-53", "Student Results", "Vocabulary & Personal", "/student-results", "Learner", "PRIMARY", "Stub"),

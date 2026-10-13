@@ -2,6 +2,7 @@
 
 Copy is taken from frontend/src/features/learning-path. Course / topic names are sample data.
 """
+import screens_dashboard_classroom
 from wf import PRIMARY, PRIMARY_SOFT, INK, MUTED, LINE, SOFT, CANVAS, DARK, MEDIA
 from chrome import (navbar, mobile_nav, footer, screen, mobile_screen, phone, eyebrow, back_link, notice,
                     DESKTOP_W, MOBILE_W)
@@ -11,7 +12,7 @@ X0, CW = 100, 1240  # .lp-shell max-width 1240
 
 def learn_page(f, pid, frame, title, h, child=None, gate=False):
     p = screen(f, pid, frame, title, h=h)
-    y = navbar(p, role="learner", active="Khóa học", child=child)
+    y = navbar(p, role="learner", active="Khóa học", child=child or "Khóa học")
     if gate:
         p.rect(X0, y + 16, CW, 64, fill=SOFT, stroke=DARK, r=12, sw=2,
                value="🛡 <b>Cần ôn lại trước khi học tiếp</b> — Bắt đầu với “Nhận diện paraphrase” để mở bài kế tiếp.",
@@ -852,7 +853,8 @@ def build(new):
     f = new("P-30a_Placement"); p30a(f); f.save()
     f = new("P-30b_TopicList"); p30b(f); p30b_states(f); p30b_mobile(f); f.save()
     f = new("P-31_TopicDetail"); p31(f); p31(f, "Locked Test / Review Gate", locked=True); p31_mobile(f); f.save()
-    f = new("P-32_LessonPlayer"); p32(f); p32(f, "Completed", "completed"); p32(f, "Review Required", "review"); p32_mobile(f); f.save()
+    f = new("P-32_LessonPlayer"); p32(f); p32(f, "Completed", "completed"); p32(f, "Review Required", "review"); p32_mobile(f)
+    screens_dashboard_classroom.writing_feedback_frames(f); f.save()
     f = new("P-33_LessonPractice"); p33(f); f.save()
     f = new("P-34_ReviewSession"); p34(f); f.save()
     f = new("P-35_TopicTest"); p35(f); p35(f, "Confirm Submit", True); f.save()

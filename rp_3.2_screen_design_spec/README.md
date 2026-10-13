@@ -12,10 +12,10 @@ The Design File is **draw.io** — every figure in the DOCX is exported from the
 |---|---|
 | `Report_3.2_ScreenDesignSpec_v0.4.0.docx` | Final document, built from `frontend/Report 3.2_ScreenDesignSpec_Template.docx` |
 | `../../Report_3.2_ScreenDesignSpec.docx` | Main submission copy (v0.3.0 kept in `archive/`) |
-| `diagrams/wireframes/*.drawio` | One file per P-ID (+ `SHELL_SharedLayout.drawio`), one tab per frame `'<P-ID> / <State>'` |
+| `../wireframes/screens/*.drawio` | One file per P-ID (+ `SHELL_SharedLayout.drawio`), one tab per frame `'<P-ID> / <State>'`. Shared with the FDS (`docs/wireframes`, next to the `rp_*` folders) |
 | `diagrams/flows/IELTSSpace_SDS_Flows.drawio` | Flows F-01 … F-05 |
 | `diagrams/IELTSSpace_SDS_InformationArchitecture.drawio` | IA-01 Site Map, IA-02 Navigation |
-| `diagrams/exports/*.png` | PNG exports (`<ID>__<frame-slug>.png`) embedded in the DOCX |
+| `../wireframes/exports/*.png`, `diagrams/exports/*.png` | PNG exports (`<ID>__<frame-slug>.png`): wireframes in `docs/wireframes/exports`, IA and flows in `diagrams/exports` |
 | `APPENDIX_INDEX.md` | P-ID ↔ route ↔ draw.io file ↔ frame ↔ PNG (generated) |
 | `CHANGELOG.md` | Changes since v0.3.0 |
 
@@ -31,11 +31,11 @@ There is no online link yet — the files live in this folder (not committed).
 
 Each frame is a tab at the bottom of the window (e.g. `P-30 / Populated`).
 Once the folder is pushed to GitHub, a view link has the form
-`https://viewer.diagrams.net/?url=https://raw.githubusercontent.com/IeltsPath-Platform/frontend/<branch>/docs/report-3.2-sds/diagrams/wireframes/P-30_CourseList.drawio`.
+`https://viewer.diagrams.net/?url=https://raw.githubusercontent.com/IeltsPath-Platform/frontend/<branch>/wireframes/screens/P-30_CourseList.drawio`.
 
 ## Clickable prototype
 
-`diagrams/IELTSSpace_SDS_Prototype.drawio` holds every wireframe frame in one file with buttons linked
+`../wireframes/IELTSPath_Prototype.drawio` holds every wireframe frame (SDS and FDS screens) in one file with buttons linked
 to their target frames (taken from the Key Interactions in Part 4).
 
 1. Open the file in draw.io Desktop (double-click) or at https://app.diagrams.net.

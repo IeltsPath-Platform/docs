@@ -185,7 +185,7 @@ def p42(f):
     h = 960
     for mode, frame in (("Luyện tập", "Practice Mode"), ("Thi thử", "Exam Mode")):
         p = screen(f, "P-42", frame, "Reading Practice Test", h=h)
-        y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng")
+        y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng", child="Reading")
         reading(p, y, mode)
         if mode == "Thi thử":
             p.text(270, h - 110, 560, 40, "Thi thử: hides Practice Tools, the Ghi chú button, Floating Notes and dialogs; ⚙ settings remain.", size=12, italic=True)
@@ -212,7 +212,7 @@ def p42(f):
 def dialog_over_reading(f, pid, title, w, h_dialog, body):
     h = 960
     p = screen(f, pid, "Populated", title, h=h)
-    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng")
+    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng", child="Reading")
     reading(p, y, "Luyện tập")
     footer(p, h - 64)
     p.overlay(DESKTOP_W, h)
@@ -273,7 +273,7 @@ def p42c(f):
 def p42d(f):
     h = 960
     p = screen(f, "P-42d", "Populated", "Floating Notes", h=h)
-    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng")
+    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng", child="Reading")
     reading(p, y, "Luyện tập")
     footer(p, h - 64)
     x, yy, w = 900, 300, 420
@@ -297,7 +297,7 @@ def p42d(f):
 def p43(f):
     h = 900
     p = screen(f, "P-43", "Populated", "Listening Practice", h=h)
-    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng")
+    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng", child="Listening")
     p.zone(14, y + 18, "A")
     p.rect(0, y, DESKTOP_W, 72, fill="#FFFFFF", stroke=LINE, r=0)
     p.rect(40, y + 16, 110, 40, fill="#FFFFFF", stroke=DARK, r=20, value="← Thoát", size=14, bold=True)
@@ -329,7 +329,7 @@ def p43(f):
 def p44(f):
     h = 940
     p = screen(f, "P-44", "Populated", "Writing Practice", h=h)
-    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng")
+    y = navbar(p, role="learner", active="Luyện tập 4 kỹ năng", child="Writing")
     p.zone(14, y + 18, "A")
     p.rect(0, y, DESKTOP_W, 72, fill="#FFFFFF", stroke=LINE, r=0)
     p.rect(40, y + 16, 110, 40, fill="#FFFFFF", stroke=DARK, r=20, value="← Thoát", size=14, bold=True)
@@ -358,7 +358,7 @@ def p44(f):
 def p44a(f):
     h = 940
     p = screen(f, "P-44a", "Populated", "Writing Chart Zoom", h=h)
-    navbar(p, role="learner", active="Luyện tập 4 kỹ năng")
+    navbar(p, role="learner", active="Luyện tập 4 kỹ năng", child="Writing")
     p.overlay(DESKTOP_W, h)
     p.card(220, 130, 1000, 660, r=18)
     p.zone(207, 150, "A")
