@@ -13,7 +13,7 @@ SCREENS = [
         ft="FT-05, FT-06", uc="UC: Manage profile and learning goal", status="Specified (OAuth linking: Draft)",
         purpose="Lets a user keep account details and the learner profile up to date and manage linked sign-in "
                 "providers.",
-        nav_from=[("Top bar avatar menu", "User clicks \"Profile\"")],
+        nav_from=[("Top bar avatar menu", "User clicks \"Thông tin cá nhân\" → P-80 / Hồ sơ của bạn")],
         nav_to=[("Learning Goals", "User clicks the \"Goals\" tab"), ("Login", "User signs out")],
         pre=[AUTH, SIGNED_IN],
         entry=[("Avatar menu", "Any screen", "—")],
@@ -114,13 +114,16 @@ SCREENS = [
                  "toggle (GAP-04); keys are redeemed only from the Home dialog (GAP-03). The rest is the design target.",
         purpose="Shows the learner's subscription, examiner credits, point balance and history, and lets the learner "
                 "redeem an activation key for Premium days or points.",
-        nav_from=[("Top bar points badge", "User clicks the balance"), ("Writing Feedback", "User clicks \"Top up points\""),
+        nav_from=[("User menu", "User clicks \"Lịch sử kích hoạt gói\" → P-80 / Lịch sử kích hoạt gói"),
+                  ("Top bar points badge", "User clicks the balance"), ("Writing Feedback", "User clicks \"Top up points\""),
                   ("Course Path", "User clicks \"Unlock with Premium\" [Draft]")],
         nav_to=[("Previous screen", "User clicks \"Back\" after redeeming")],
         pre=[AUTH, LEARNER],
         entry=[("Points badge", "Top bar", "—"), ("Top up link", "Writing Feedback", "Query: `?activate=1` (opens MDL-01)")],
         exits=[("User redeems a key", "API returns 200", "Stay", "MSG-01 / MSG-02"), ex_menu(), EX_SESSION],
-        comps=[("CRD", "Subscription", "Card", "—", "Plan, status ACTIVE / EXPIRED / CANCELLED, end date, examiner "
+        comps=[("TAB", "Lịch sử kích hoạt gói", "Account tab", "Design target; history list API missing",
+                "Activation-key history; no payment gateway or payment transaction is implied"),
+               ("CRD", "Subscription", "Card", "—", "Plan, status ACTIVE / EXPIRED / CANCELLED, end date, examiner "
                 "credits left; \"No subscription\" state"),
                ("CRD", "Point balance", "Card", "—", "Whole number ≥ 0"),
                ("TBL", "Points history", "Table", "20 per page (offset/limit)", "Date, type (KEY_CREDIT, "
