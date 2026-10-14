@@ -54,24 +54,36 @@ SCREENS = [
     ("2.17", "Review Session", ["P-34_ReviewSession"]),
     ("2.19", "Test Attempt", ["P-35_TopicTest"]),
     ("2.20", "Test Result", ["P-36_TestResult"]),
+    ("2.21", "Mock Tests", ["P-46_MockTestCatalog", "P-47_MockTestRunner"]),
     ("2.22", "Practice Test Catalog", ["P-41_PracticeCatalog", "P-41a_PracticeModeSelect"]),
     ("2.23", "Practice Workspaces",
      ["P-42_ReadingPracticeTest", "P-42a_CreateFlashcard", "P-42b_DictionaryLookup", "P-42c_SavedFlashcards",
-      "P-42d_FloatingNotes", "P-43_ListeningPractice", "P-44_WritingPractice", "P-44a_WritingChartZoom"]),
+      "P-42d_FloatingNotes", "P-43_ListeningPractice", "P-44_WritingPractice", "P-44a_WritingChartZoom",
+      "P-45_SpeakingPractice"]),
     ("2.24", "Classroom", ["P-20_MyClassroom", "P-20a_LessonDetail"]),
     ("2.25", "Classroom Lesson Workspace", ["P-21_LessonWorkspace"]),
-    ("2.31", "Vocabulary", ["P-50_Vocabulary"]),
+    ("2.35", "Flashcards & Decks", ["P-51_MyFlashcards", "P-51a_CreateSet", "P-51b_SetDetail"]),
+    ("2.26", "Profile & Account", ["P-80_Account:Hồ sơ của bạn|Lịch sử đăng nhập", "SHELL_SharedLayout:User Menu"]),
+    ("2.28", "Subscription & Points", ["P-80_Account:Lịch sử kích hoạt gói|Lịch sử giao dịch điểm"]),
+    ("2.31", "Vocabulary", ["P-50_Vocabulary", "P-56_DictionaryHome", "P-57_WordDetail", "P-58_VocabularyMap",
+                            "P-59_VocabularySet", "P-59a_SetStudy", "P-59b_TopicLessonPath", "P-59c_VocabularyLesson",
+                            "P-59d_Flashcard"]),
+    ("2.54", "Submission History", ["P-54_SubmissionHistory"]),
 ]
 V07_DESCRIPTION = (
     "Aligned with the frontend at 6525a6d (main) and the backend at eedc6cd (no code change since bf7db56; the "
-    "capstone documents moved to the docs repository): Overview follows the refreshed dashboard — sidebar tabs, hero "
+    "capstone documents moved to the docs repository): Overview follows the refreshed dashboard — Dashboard hover menu, hero "
     "with the current course and IELTS Journey, five study stats, the activity calendar with day and week selection, "
     "My Learning Orbit, Study Plan, SPACE Autonomy, AI suggestions and the Dữ liệu chi tiết tab; Placement Test waits "
     "for GET placement-result instead of the course list, so FG-17 is resolved; every Part 2 UI figure is now exported "
     "from the draw.io wireframes in docs/wireframes/screens (one file per P-ID, shared with the Screen Design Spec; "
     "clickable prototype docs/wireframes/IELTSPath_Prototype.drawio) in place of the application screenshots, with "
     "new drawings for Overview (P-11), Writing Feedback (P-32), Classroom (P-20, P-20a), Classroom Lesson Workspace "
-    "(P-21) and Vocabulary (P-50) and figures added to every built screen.")
+    "(P-21) and Vocabulary (P-50) and figures added to every built screen; design-target wireframes added for Mock "
+    "Tests (P-46 catalog, P-47 computer-based runner), Speaking Practice (P-45), the 3-column Writing Practice (P-44), "
+    "Profile & Account and Subscription & Points (P-80); Submission History (P-54) is specified in Section 2.54. "
+    "The Dashboard menu replaces its left sidebar; personal information is reached through Thông tin cá nhân in "
+    "the user menu. The account tab is named Lịch sử kích hoạt gói and the dictionary remains Tra Anh-Việt.")
 
 
 def frames(source):
@@ -168,7 +180,8 @@ def main():
         new = []
         for k, (source, tab, png) in enumerate(shots, 1):
             pid, frame = tab.split(" / ", 1)
-            label = frame if pid == first_pid else f"{by_id(pid).name} · {frame}"
+            source_name = "Shared layout" if pid == "SHELL" else by_id(pid).name
+            label = frame if pid == first_pid else f"{source_name} · {frame}"
             label = label.removeprefix(f"{name} — ")  # 'Writing Feedback — Đã đạt' under 2.14 Writing Feedback
             stem = source.partition(":")[0]
             cap = copy.deepcopy(caption_proto)
@@ -192,6 +205,8 @@ def main():
             set_cell(r.cells[3], V07_DESCRIPTION)
 
     used = {el.get(qn("r:embed")) for el in body.iter(qn("a:blip"))}
+    for drawing_id, drawing in enumerate(body.iter(qn("wp:docPr")), 1):
+        drawing.set("id", str(drawing_id))
     for rid, rel in list(d.part.rels.items()):
         if rel.reltype.endswith("/image") and rid not in used:
             d.part.drop_rel(rid)

@@ -5,12 +5,12 @@ DESKTOP_W = 1440
 MOBILE_W = 375
 
 GUEST_NAV = ["Trang chủ", "Khóa học", "Luyện tập 4 kỹ năng", "Bài mẫu Writing 8.0+", "Kết quả học viên"]
-MEMBER_NAV = ["Trang chủ", "Khóa học", "Luyện tập 4 kỹ năng", "Sổ từ vựng", "Kết quả học viên"]
+MEMBER_NAV = ["Trang chủ", "Khóa học", "Luyện tập 4 kỹ năng", "Sổ ghi nhớ", "Kết quả học viên"]
 SUBNAV = {
     "Khóa học": ["Test đầu vào 4 kỹ năng FREE", "Khóa học"],
     "Luyện tập 4 kỹ năng": ["Listening", "Reading", "Writing", "Speaking"],
     "Trang chủ@member": ["Dashboard", "Lịch sử nộp bài", "Khóa học của tôi"],
-    "Sổ từ vựng": ["Flashcard của tôi", "Kho từ vựng", "Bài mẫu 8đ"],
+    "Sổ ghi nhớ": ["Flashcard của tôi", "Học", "Bài mẫu 8đ"],
 }
 NAV_H = 72
 CURRENT = "#F97316"  # orange underline of the current menu item (frontend sub-menu style)

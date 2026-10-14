@@ -70,9 +70,11 @@ def navigation(f):
             ("Trang chủ", [("Dashboard", "P-11"), ("Lịch sử nộp bài", "P-54"), ("Khóa học của tôi", "P-30")]),
             ("Khóa học", [("Test đầu vào 4 kỹ năng FREE", "P-30a"), ("Khóa học", "P-30")]),
             ("Luyện tập 4 kỹ năng", [("Listening / Reading / Writing / Speaking", "P-41?skill=")]),
-            ("Sổ từ vựng", [("Flashcard của tôi", "P-51"), ("Kho từ vựng", "P-50"), ("Bài mẫu 8đ", "P-52")]),
+            ("Sổ ghi nhớ", [("Flashcard của tôi", "P-51"), ("Học", "P-56"), ("Bài mẫu 8đ", "P-52")]),
             ("Kết quả học viên", [("—", "P-53")]),
-            ("◯ Học viên · Points ▾", [("Simulated plan · Đăng xuất", "→ P-01")]),
+            ("◯ Học viên · Points ▾", [("Thông tin cá nhân", "P-80"),
+                                      ("Lịch sử kích hoạt gói", "P-80"),
+                                      ("Điểm · Đăng nhập", "P-80"), ("Đăng xuất", "P-01")]),
         ]),
     ]
     for ci, (head, items) in enumerate(cols):
@@ -88,8 +90,10 @@ def navigation(f):
                 p.edge(main, c, exit=(1, 0.5), entry=(0, 0.5))
                 p.edge(c, t, exit=(1, 0.5), entry=(0, 0.5))
             y += h + 16
-    p.text(0, 720, 1500, 60, "🔒 = RequireAuth: a Guest is sent to P-01 and returns to the original route (state.from) after sign-in, default /learn (P-30). "
-           "Desktop > 1240px: link row + sliding indicator; ≤ 1240px: ☰ button opens a link grid.", size=13, valign="top")
+    p.text(0, 850, 1500, 80, "Dashboard hover → Tổng quát / Dữ liệu chi tiết / Lịch sử ôn luyện / Xếp hạng. "
+           "Thông tin cá nhân is in the user menu. No left Dashboard sidebar.<br>"
+           "🔒 = RequireAuth: a Guest is sent to P-01 and returns to the original route after sign-in, default /learn (P-30). "
+           "Desktop > 1240px: link row; ≤ 1240px: ☰ opens a link grid.", size=13, valign="top")
 
 
 def build_ia(new):

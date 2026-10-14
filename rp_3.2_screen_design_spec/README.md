@@ -19,7 +19,8 @@ The Design File is **draw.io** — every figure in the DOCX is exported from the
 | `APPENDIX_INDEX.md` | P-ID ↔ route ↔ draw.io file ↔ frame ↔ PNG (generated) |
 | `CHANGELOG.md` | Changes since v0.3.0 |
 
-Counts: 31 `.drawio` files, 69 frames (28 screens specified in Part 4 + shell + IA + 5 flows).
+Wireframe counts: 39 screen `.drawio` files, 90 frames; the combined prototype has 91 tabs including its index.
+Information architecture and flow diagrams are stored separately under `diagrams/`.
 
 ## Opening the design files
 
@@ -46,6 +47,12 @@ to their target frames (taken from the Key Interactions in Part 4).
 4. Click the frame title (top-left of each frame) to go back to the index.
 
 Links live in `scripts/prototype.py` (`LINKS` per frame, `NAV` for the navbar) and are rebuilt by `build_diagrams.py`.
+
+Design update (13/10/2026): the Dashboard left sidebar is replaced by a hover popup. In the static Draw.io prototype,
+click **Dashboard** to open `P-11 / Menu Dashboard`, then choose Tổng quát, Dữ liệu chi tiết, Lịch sử ôn luyện or Xếp hạng.
+The intended UI also supports keyboard/click opening and closes on pointer leave or Esc. **Thông tin cá nhân** is in
+`SHELL / User Menu` and links to `P-80 / Hồ sơ của bạn`; activation history keeps the label **Lịch sử kích hoạt gói**.
+The dictionary includes **Tra Anh-Việt**. These frames specify the target design and do not change application code.
 
 ## Rebuild
 

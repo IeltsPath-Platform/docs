@@ -12,26 +12,15 @@ WHITE = "#FFFFFF"
 
 
 # ------------------------------------------------------------------ Overview (/overview)
-OV_SIDE_X, OV_SIDE_W = 100, 200
-OV_X, OV_W = 330, 1010  # main column next to the sidebar
-OV_TABS = ["Tổng quát", "Dữ liệu chi tiết", "Lịch sử ôn luyện", "Hồ sơ của tôi", "Xếp hạng"]
-OV_ICONS = ["▦", "▥", "◷", "◯", "♕"]
+OV_X, OV_W = X0, CW
+OV_TABS = ["Tổng quát", "Dữ liệu chi tiết", "Lịch sử ôn luyện", "Xếp hạng"]
+OV_ICONS = ["▦", "▥", "◷", "♕"]
 
 
 def overview_page(f, frame, h, active_tab):
     p = screen(f, "P-11", frame, "Overview Dashboard", h=h)
     y = navbar(p, role="learner", active="Trang chủ", child="Dashboard") + 32
-    p.zone(OV_SIDE_X - 36, y, "A")
-    p.card(OV_SIDE_X, y, OV_SIDE_W, 300, r=14)
-    for i, (label, icon) in enumerate(zip(OV_TABS, OV_ICONS)):
-        ty = y + 12 + i * 56
-        if label == active_tab:
-            p.rect(OV_SIDE_X + 10, ty, OV_SIDE_W - 20, 46, fill=PRIMARY, stroke=PRIMARY, r=10,
-                   value=f"{icon}  {label}", color=WHITE, bold=True, size=14, align="left")
-        else:
-            p.text(OV_SIDE_X + 26, ty, OV_SIDE_W - 40, 46, f"{icon}  {label}", size=14, color=INK)
-    p.text(OV_SIDE_X, y + 312, OV_SIDE_W, 60, "Sidebar sticky; the tab lives in page state (not the URL).",
-           size=11, color=MUTED, italic=True, valign="top")
+    p.zone(268, 80, "A")
     consult_fab(p, DESKTOP_W - 210, h - 70)
     return p, y
 
@@ -188,9 +177,9 @@ def ai_recommendations(p, y):
     return y + h + 24
 
 
-def overview_general(f):
+def overview_general(f, frame="Tổng quát"):
     h = 2550
-    p, y = overview_page(f, "Tổng quát", h, "Tổng quát")
+    p, y = overview_page(f, frame, h, "Tổng quát")
     p.zone(OV_X - 36, y, "B")
     hw = 610
     p.rect(OV_X, y, hw, 260, fill=PRIMARY, stroke=PRIMARY, r=18)
@@ -333,7 +322,7 @@ def overview_placeholder(f):
     p.text(OV_X + 160, y + 86, OV_W - 320, 44, "Khu vực này đang hoàn thiện đồng bộ dữ liệu. Bạn có thể quay lại màn hình "
            "Overview hoặc Dữ liệu chi tiết.", size=14, color=MUTED, align="center")
     p.btn(OV_X + OV_W / 2 - 100, y + 148, 200, 44, "Quay về Overview", size=14)
-    p.text(OV_X, y + 240, OV_W, 22, "Same card for Lịch sử ôn luyện, Hồ sơ của tôi and Xếp hạng.", size=12,
+    p.text(OV_X, y + 240, OV_W, 22, "Same card for Lịch sử ôn luyện and Xếp hạng.", size=12,
            color=MUTED, italic=True, align="center")
     return p
 
@@ -343,6 +332,15 @@ def build_overview(new):
     overview_general(f)
     overview_detailed(f)
     overview_placeholder(f)
+    p = overview_general(f, frame="Menu Dashboard")
+    p.card(300, 116, 270, 224, r=12, stroke=DARK, sw=2)
+    for i, (label, icon) in enumerate(zip(OV_TABS, OV_ICONS)):
+        p.rect(310, 128 + i * 50, 250, 44, fill=PRIMARY_SOFT if i == 0 else WHITE,
+               stroke="none", r=8, value=f"{icon}  {label}", color=PRIMARY if i == 0 else INK,
+               bold=i == 0, size=14, align="left")
+    for cell in p.vertices():
+        if cell["y"] == -54:
+            cell["value"] = "Hover / focus Dashboard → menu. Draw.io: click Dashboard to preview."
     f.save()
 
 
@@ -530,24 +528,28 @@ def build_classroom(new):
 
 
 # ------------------------------------------------------------------ Classroom Lesson Workspace (/lessons/:lessonId)
-def lesson_ws(f, frame, view):
-    card_h = {"materials": 860, "quiz": 680, "vocabulary": 680}[view]
-    h = 400 + card_h
-    p = screen(f, "P-21", frame, "Lesson Workspace", h=h)
+def lesson_ws(f, frame, view, pid="P-21", title="Lesson Workspace", card=None):
+    """Class session page (/lessons/:lessonId). `card` = (side, mode, effect) of the flashcard view."""
+    card_h = {"materials": 860, "quiz": 680, "vocabulary": 680, "flashcard": 880}[view]
+    h = 380 + card_h
+    p = screen(f, pid, frame, title, h=h)
     y = navbar(p, role="learner")
-    p.zone(X0 - 36, y + 30, "A")
-    p.rect(0, y, DESKTOP_W, 170, fill=PRIMARY_SOFT, stroke=LINE, r=0)
-    p.chip(X0, y + 30, "Buổi 2", kind="solid")
-    p.chip(X0 + 76, y + 30, "IELTS 3.0", kind="outline")
-    p.text(X0, y + 64, 700, 40, "<b>Bài 1: Nature &amp; Environment</b>", size=28)
-    p.text(X0, y + 110, 400, 20, "▤ Cùng học tốt hơn", size=13, color=MUTED)
+    p.zone(X0 - 36, y + 24, "A")
+    p.cell("", "rounded=0;fillColor=#0D2B8D;strokeColor=none;gradientColor=#123AB5;gradientDirection=east;", 0, y, DESKTOP_W, 140)
+    p.text(X0, y + 22, 140, 40, "<b>Buổi 1</b>", size=28, color=WHITE)
+    p.rect(X0 + 130, y + 28, 130, 30, fill="#2A4FC4", stroke="#5B7DF0", r=15, value="<b>Khoá IELTS 3.0</b>", size=12, color=WHITE)
+    p.rect(X0 + 272, y + 28, 230, 30, fill="#2A4FC4", stroke="#5B7DF0", r=15, value="<b>Bài 1: Nature &amp; Environment</b>",
+           size=12, color=WHITE)
+    p.text(X0, y + 84, 300, 22, "← Quay lại Thời khoá biểu", size=12, color="#C7D2F0")
     px = X0 + CW - 380
-    p.card(px, y + 26, 380, 118, r=14)
-    p.text(px + 20, y + 40, 220, 22, "Tiến độ Homework Hub", size=13, color=MUTED)
-    p.text(px + 280, y + 40, 80, 22, "<b>68%</b>", size=16, align="right")
-    p.progress(px + 20, y + 78, 340, 68)
-    p.text(px + 20, y + 98, 340, 20, "Hoàn thành 8 / 12 bài tập", size=12, color=MUTED)
-    y += 200
+    p.rect(px, y + 20, 380, 100, fill="#1E3FA8", stroke="#5B7DF0", r=14)
+    p.text(px + 18, y + 30, 240, 22, "▣ <b>Tiến độ Homework Hub</b>", size=13, color=WHITE)
+    p.text(px + 18, y + 58, 200, 20, "Bạn đang làm bài", size=11, color="#C7D2F0")
+    p.rect(px + 140, y + 58, 40, 20, fill=WHITE, stroke="none", r=10, value="<b>2/3</b>", size=11, color=PRIMARY)
+    p.text(px + 290, y + 54, 70, 26, "<b>68%</b>", size=17, color=WHITE, align="right")
+    p.rect(px + 18, y + 92, 344, 8, fill="#2A4FC4", stroke="none", r=4)
+    p.rect(px + 18, y + 92, 234, 8, fill="#F97316", stroke="none", r=4)
+    y += 170
     mw = 860
     p.zone(X0 - 36, y, "B")
     p.card(X0, y, mw, card_h, r=16)
@@ -592,6 +594,9 @@ def lesson_ws(f, frame, view):
             p.rect(X0 + 360 + i * 46, fy + 2, 38, 38, fill=PRIMARY if i == 0 else WHITE, stroke=PRIMARY if i == 0 else LINE,
                    r=8, value=str(i + 1), color=WHITE if i == 0 else INK, size=13, bold=True)
         p.text(X0 + 28, fy + 60, 300, 22, "Đã trả lời 1/5 câu", size=13, color=MUTED)
+    elif view == "flashcard":
+        import screens_vocab_lesson  # F045 flashcard, shared with the dictionary lessons
+        screens_vocab_lesson.homework_flashcard(p, X0, y, mw, card or ("front", "full", None))
     else:
         eyebrow(p, X0 + 28, y + 24, "Homework Hub / Từ vựng")
         p.text(X0 + 28, y + 48, 520, 36, "<b>Bài 1: Nature &amp; Environment</b>", size=24)
@@ -607,7 +612,7 @@ def lesson_ws(f, frame, view):
     p.zone(sx - 30, y, "C")
     p.card(sx, y, sw, 640, r=16)
     p.text(sx + 20, y + 18, sw - 40, 20, "LESSON RESOURCE", size=12, color=MUTED, bold=True)
-    active = {"materials": "Slide bài giảng", "quiz": "Ngữ pháp", "vocabulary": "Từ vựng"}[view]
+    active = {"materials": "Slide bài giảng", "quiz": "Ngữ pháp", "vocabulary": "Từ vựng", "flashcard": "Từ vựng"}[view]
     ry = y + 46
     for label in ("Slide bài giảng", "Lesson Summary", "Từ vựng buổi học"):
         on = label == active or (view == "vocabulary" and label == "Từ vựng buổi học")
@@ -625,10 +630,12 @@ def lesson_ws(f, frame, view):
         ry += 46
     p.text(sx + 20, ry + 14, 160, 20, "IELTS SKILLS", size=12, color=MUTED, bold=True)
     p.text(sx + 20, ry + 40, sw - 40, 40, "🎓 Luyện kỹ năng được mở sau khi hoàn thành bài tập.", size=12, color=MUTED, valign="top")
-    p.card(sx + 14, y + 540, sw - 28, 84, r=12, fill=SOFT)
-    p.rect(sx + 28, y + 556, 50, 50, fill=PRIMARY_SOFT, stroke=PRIMARY, r=25, value="<b>L</b>", color=PRIMARY, size=17)
-    p.text(sx + 90, y + 552, 150, 60, "Mentor của bạn<br><b>Ms. Lan</b><br>IELTS Instructor", size=12, valign="top")
-    p.text(sx + sw - 54, y + 566, 30, 30, "💬", size=16, align="center")
+    p.rect(sx, y + 660, sw, 130, fill=PRIMARY, stroke=PRIMARY, r=14)
+    p.text(sx + 18, y + 670, 200, 20, "Mentor của bạn", size=11, color="#C7D2F0")
+    p.cell("<b>L</b>", "ellipse;whiteSpace=wrap;html=1;fillColor=#F97316;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=17;",
+           sx + 18, y + 696, 46, 46)
+    p.text(sx + 76, y + 694, 200, 48, "<b>Ms. Lan</b><br><font color='#C7D2F0'>IELTS Instructor</font>", size=13, color=WHITE, valign="top")
+    p.rect(sx + 18, y + 750, sw - 36, 30, fill="#2A4FC4", stroke="#5B7DF0", r=8, value="Nhắn Mentor", size=12, color=WHITE)
     return p
 
 
@@ -637,6 +644,7 @@ def build_lesson_workspace(new):
     lesson_ws(f, "Tài liệu buổi học", "materials")
     lesson_ws(f, "Homework — Ngữ pháp", "quiz")
     lesson_ws(f, "Homework — Từ vựng", "vocabulary")
+    lesson_ws(f, "Homework — Flashcard", "flashcard")
     f.save()
 
 
@@ -672,7 +680,7 @@ VOCAB = [("sustainable", "adjective", "B2", "/səˈsteɪ.nə.bəl/", "able to co
 def vocabulary(f, frame, empty=False):
     h = 1560 if not empty else 900
     p = screen(f, "P-50", frame, "Vocabulary / Dictionary", h=h)
-    y = navbar(p, role="learner", active="Sổ từ vựng", child="Kho từ vựng") + 28
+    y = navbar(p, role="learner", active="Sổ ghi nhớ", child="Học") + 28
     p.zone(X0 - 36, y, "A")
     p.rect(X0, y, CW, 150, fill=PRIMARY, stroke=PRIMARY, r=18)
     p.text(X0 + 32, y + 26, 600, 20, "<b>IELTS SPACE DICTIONARY</b>", size=13, color="#C7D2F0")
