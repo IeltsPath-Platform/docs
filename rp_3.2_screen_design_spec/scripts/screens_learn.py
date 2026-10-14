@@ -163,7 +163,7 @@ def p30_mobile(f):
     ox = phone(p, 1, "Menu mở (☰) · ≤1240px", h=900)
     y = mobile_nav(p, ox=ox)
     p.rect(ox, y, MOBILE_W, 330, fill=PRIMARY, stroke=PRIMARY, r=0)
-    for i, t in enumerate(("Trang chủ", "Khóa học", "Luyện tập 4 kỹ năng", "Sổ từ vựng", "Kết quả học viên")):
+    for i, t in enumerate(("Trang chủ", "Khóa học", "Luyện tập 4 kỹ năng", "Sổ ghi nhớ", "Kết quả học viên")):
         p.rect(ox + 16, y + 16 + i * 60, 343, 48, fill="#FFFFFF" if i == 1 else PRIMARY, stroke="#FFFFFF", r=10,
                value=t, color=PRIMARY if i == 1 else "#FFFFFF", size=14, bold=True)
     p.text(ox + 16, y + 346, 343, 60, "site-nav-links.is-open: lưới link 48px; Esc hoặc chọn link để đóng.", size=12, color=MUTED, italic=True)

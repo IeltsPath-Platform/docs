@@ -164,7 +164,7 @@ ROLES = [
     ("Guest", "Trang chủ · Khóa học🔒 · Luyện tập 4 kỹ năng🔒 · Bài mẫu Writing 8.0+🔒 · Kết quả học viên🔒 · [Đăng nhập] [Đăng ký]",
      "P-10 Home (/ → /home). 🔒 items lead to P-01."),
     ("Learner (CUSTOMER)", "Trang chủ (Dashboard, Lịch sử nộp bài, Khóa học của tôi) · Khóa học (Test đầu vào 4 kỹ năng FREE, Khóa học) · "
-     "Luyện tập 4 kỹ năng (Listening/Reading/Writing/Speaking) · Sổ từ vựng (Flashcard của tôi, Kho từ vựng, Bài mẫu 8đ) · Kết quả học viên · user menu",
+     "Luyện tập 4 kỹ năng (Listening/Reading/Writing/Speaking) · Sổ ghi nhớ (Flashcard của tôi, Học, Bài mẫu 8đ) · Kết quả học viên · user menu",
      "After sign-in: the originally requested route (state.from) or P-30 Course List (/learn). Opening / → P-11 /overview."),
 ]
 ROLE_NOTES = [
@@ -261,7 +261,7 @@ SHELL_NAV = [
     ("Trang chủ", "— (text)", "Guest, Learner", "No — Learner subnav: Dashboard / Lịch sử nộp bài / Khóa học của tôi"),
     ("Khóa học", "—", "Guest🔒, Learner", "No — subnav: Test đầu vào 4 kỹ năng FREE / Khóa học"),
     ("Luyện tập 4 kỹ năng", "—", "Guest🔒, Learner", "No — subnav: Listening / Reading / Writing / Speaking"),
-    ("Sổ từ vựng", "—", "Learner", "No — subnav: Flashcard của tôi / Kho từ vựng / Bài mẫu 8đ"),
+    ("Sổ ghi nhớ", "—", "Learner", "No — subnav: Flashcard của tôi / Học / Bài mẫu 8đ"),
     ("Bài mẫu Writing 8.0+", "—", "Guest🔒", "No"),
     ("Kết quả học viên", "—", "Guest🔒, Learner", "No"),
     ("User menu", "◯ avatar + Points ▾", "Learner", "Points / tier shown in the trigger"),
@@ -275,8 +275,8 @@ SHELL_FRAMES = [
     ("Exam Shell", "SHELL__exam-shell.png", "PlacementExamShell (P-30a)"),
 ]
 SHELL_ZONES = [
-    ("A", "SiteNavbar: logo (→ /home), primary items, user menu or [Đăng nhập][Đăng ký]; skip link “Chuyển đến nội dung chính”."),
-    ("B", "Subnav: sections of the active item; hovering another item previews its sections (reverts after 200 ms). For a Guest on Trang chủ the subnav floats over the page."),
+    ("A", "SiteNavbar: logo (→ /home), primary items, user menu or [Đăng nhập][Đăng ký]; skip link “Chuyển đến nội dung chính”. User menu: Thông tin cá nhân → P-80 Hồ sơ của bạn; Lịch sử kích hoạt gói; Lịch sử giao dịch điểm; Lịch sử đăng nhập; Đăng xuất."),
+    ("B", "Subnav: sections of the active item. Design target: hover Dashboard opens Tổng quát / Dữ liệu chi tiết / Lịch sử ôn luyện / Xếp hạng below the trigger; no Dashboard sidebar. Keep open while pointer is within trigger or popup; close on leave, selection or Esc. Click and keyboard also open it. Personal information belongs to the user menu. Draw.io simulates the open state through P-11 / Menu Dashboard."),
     ("C", "Banners inside /learn/*: ReviewGateBanner (“Cần ôn lại trước khi học tiếp” + “Làm bài ôn”) and NoticeBanner (redirect notices, ✕ to dismiss)."),
     ("D", "main#main-content — per-route ErrorBoundary (“Không thể hiển thị lộ trình học”)."),
     ("E", "DemoControls (only when VITE_USE_MOCK_LEARNING): “Đặt lại demo”, “Giả lỗi máy chủ 500”."),
