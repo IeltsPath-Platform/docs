@@ -35,5 +35,6 @@ from fds_screens_learner import SCREENS as _LEARNER  # noqa: E402
 from fds_screens_prototype import SCREENS as _PROTOTYPE  # noqa: E402
 from fds_screens_self_study import SCREENS as _SELF_STUDY  # noqa: E402
 from fds_screens_staff import SCREENS as _STAFF  # noqa: E402
+from fds_screens_history import SCREENS as _HISTORY  # noqa: E402
 
-SCREENS = _LEARNER + _PROTOTYPE + _SELF_STUDY + _STAFF
+SCREENS = _LEARNER + _PROTOTYPE + _SELF_STUDY + _STAFF + _HISTORY

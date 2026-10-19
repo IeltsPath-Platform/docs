@@ -557,7 +557,9 @@ NAV_FLOW_TEXT = [
     "Khóa học (sub-menu Test đầu vào 4 kỹ năng FREE · Khóa học), Luyện tập 4 kỹ năng (Listening · Reading · Writing · "
     "Speaking, each /practice-tests?skill=…), Bài mẫu Writing 8.0+ and Kết quả học viên. Signed in, Trang chủ opens a "
     "sub-menu Dashboard (/overview) · Lịch sử nộp bài · Khóa học của tôi (/learn), Sổ từ vựng (Flashcard của tôi · "
-    "Kho từ vựng · Bài mẫu 8đ) is added, and the user dropdown shows the point balance and Đăng xuất. After sign-in "
+    "Kho từ vựng · Bài mẫu 8đ) is added. The design target replaces the Dashboard left sidebar with a hover popup "
+    "below Dashboard: Tổng quát, Dữ liệu chi tiết, Lịch sử ôn luyện and Xếp hạng. The user dropdown shows the point "
+    "balance, Thông tin cá nhân (P-80 / Hồ sơ của bạn), Lịch sử kích hoạt gói and Đăng xuất. After sign-in "
     "the app returns to the route the user came from, otherwise to /learn; it does not route by role yet (GAP-02).",
     "Learners move along the course loop /learn (course list) → /learn/courses/:courseId (the topic path of one "
     "course, ending with the course final test) → /learn/topics/:topicId → /learn/lessons/:lessonId → "

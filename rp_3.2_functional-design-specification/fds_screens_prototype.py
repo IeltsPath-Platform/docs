@@ -57,6 +57,7 @@ SCREENS = [
                 "\"Lưu từ vựng và ảnh minh họa trên trình duyệt này. Chưa đồng bộ tài khoản.\""),
                ("PNL", "Ghi chú", "Floating notes", "—", "\"Ghi chú ({n})\"; kept in the page"),
                ("AUD", "Listening player", "Audio player", "Playback rate", "\"Section 1 · Practice\""),
+               ("PNL", "Tra Anh-Việt", "Dictionary panel", "English-to-Vietnamese lookup", "Reading glossary; Writing retains its existing Tra Việt-Anh and Tra Anh-Việt tabs"),
                ("TXA", "Writing editor", "Text Area", "Minimum words shown", "Countdown timer; word counter; \"Bài viết chỉ được "
                 "giữ trong phiên hiện tại.\""),
                ("BTN", "Speaking recorder", "Button", "Microphone permission", "\"Thời gian nói {mm:ss}\"; \"Bản ghi chỉ ở trong "

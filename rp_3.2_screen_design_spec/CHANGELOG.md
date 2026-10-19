@@ -1,5 +1,14 @@
 # Changelog — Report 3.2 Screen Design Specification
 
+## Design update — 13/10/2026
+
+- P-11: remove the left sidebar and expand the content. Hovering Dashboard opens Tổng quát, Dữ liệu chi tiết, Lịch sử ôn luyện and Xếp hạng. The linked `Menu Dashboard` frame demonstrates the open popup in Draw.io.
+- Shared user menu: add Thông tin cá nhân → P-80 / Hồ sơ của bạn and account history shortcuts.
+- P-80: retain the label Lịch sử kích hoạt gói for activation history.
+- P-42b: explicitly label English-to-Vietnamese lookup as Tra Anh-Việt; existing bidirectional Writing dictionary tabs remain available.
+- P-54: use Lịch sử nộp bài consistently; the FDS gains a dedicated Submission History section.
+- These are design-document changes; application behavior has not been changed.
+
 ## v0.4.0 — 09/10/2026
 
 Full rewrite against the current UI (`frontend/src/app/App.tsx`). Design File moved to draw.io.

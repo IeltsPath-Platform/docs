@@ -289,7 +289,8 @@ SCREENS = [
         exits=[EX_TOPBAR, EX_SESSION],
         comps=[("PNL", "Hero banner", "Banner", "—", "\"Xin chào, {username} 👋\" · \"Band hiện tại: {band}\" · \"Mục tiêu: "
                 "{target} IELTS\""),
-               ("PNL", "Sidebar", "Section menu (sticky; a row on small screens)", "—", "Overview sections"),
+               ("PNL", "Dashboard menu", "Hover popup directly below Dashboard", "One active section; default Tổng quát",
+                "Tổng quát · Dữ liệu chi tiết · Lịch sử ôn luyện · Xếp hạng; no left sidebar"),
                ("CRD", "Dữ Liệu Học Tổng Quan", "Stat cards", "—", "Tổng thời gian học, Số ngày học, Số đề đã luyện, Tỷ lệ "
                 "chính xác, Streak học"),
                ("PNL", "Biểu đồ “chăm chỉ” của bạn", "Month calendar", "Month switch; pick a day or a week", "\"đã học\" / "
@@ -301,7 +302,10 @@ SCREENS = [
                ("PNL", "Gợi Ý Ôn Luyện Từ AI", "Panel", "—", "\"Bắt đầu ngay\""),
                ("PNL", "Phản Hồi Từ Mentor · Khoá Đang Học · Các Khoá Học Của Tôi", "Panels", "—", "—")],
         apis=[("Page load", None, "mocks/overviewData.ts", "Render cards", "—")],
-        interactions=[("Data source", ["All numbers are mock data. When wired, study time and streak come from user-service "
+        interactions=[("Dashboard navigation", ["Hover over Dashboard to open the popup directly below it.",
+                                               "The draw.io prototype simulates hover by clicking Dashboard to open P-11 / Menu Dashboard.",
+                                               "Personal information opens from the user menu: Thông tin cá nhân → P-80 / Hồ sơ của bạn."]),
+                      ("Data source", ["All numbers are mock data. When wired, study time and streak come from user-service "
                                        "(activity.list, streak.get) and skill progress from learn.mastery (OQ-17)."])],
         msgs=[("Empty State", "Design target: no activity", "\"Chưa có dữ liệu học tập.\"", "—")],
         rules=[("BR-27", "Personal data visible only to its owner", "Design target when the APIs are wired")],

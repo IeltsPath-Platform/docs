@@ -1,4 +1,5 @@
 """Wireframes: practice catalog and skill workspaces (P-41…P-44a). Content is mock data in the FE."""
+import screens_exam_account
 from wf import PRIMARY, PRIMARY_SOFT, INK, MUTED, LINE, SOFT, CANVAS, DARK, MEDIA
 from chrome import (navbar, mobile_nav, footer, consult_fab, screen, mobile_screen, phone, eyebrow,
                     DESKTOP_W, MOBILE_W)
@@ -266,13 +267,14 @@ def p42b(f):
         p.zone(x - 13, y + 20, "A")
         p.text(x + 32, y + 22, w - 100, 30, "<b>Tra từ vựng</b>", size=22)
         p.text(x + 32, y + 56, w - 64, 24, "Từ điển nhỏ của bài đọc. Có thể tra cứu thêm trên Wiktionary.", size=13, color=MUTED)
-        p.zone(x - 13, y + 100, "B")
-        p.text(x + 32, y + 100, w - 64, 30, "<b>snow gun</b>", size=20)
-        p.text(x + 32, y + 136, w - 64, 30, "máy phun tuyết", size=16)
-        p.text(x + 32, y + 176, w - 64, 40, "Not in the glossary: “Chưa có nghĩa trong từ điển của bài. Hãy chọn một từ/cụm từ ngắn hoặc mở trang tra cứu bên dưới.”", size=12, color=MUTED, italic=True, valign="top")
-        p.zone(x - 13, y + 236, "C")
-        p.link(x + 32, y + 236, 400, "↗ Wiktionary (new tab)")
-    dialog_over_reading(f, "P-42b", "Dictionary Lookup", 520, 290, body)
+        p.chip(x + 32, y + 92, "Tra Anh-Việt", kind="active", w=150)
+        p.zone(x - 13, y + 140, "B")
+        p.text(x + 32, y + 140, w - 64, 30, "<b>snow gun</b>", size=20)
+        p.text(x + 32, y + 176, w - 64, 30, "máy phun tuyết", size=16)
+        p.text(x + 32, y + 216, w - 64, 40, "Not in the glossary: “Chưa có nghĩa trong từ điển của bài. Hãy chọn một từ/cụm từ ngắn hoặc mở trang tra cứu bên dưới.”", size=12, color=MUTED, italic=True, valign="top")
+        p.zone(x - 13, y + 276, "C")
+        p.link(x + 32, y + 276, 400, "↗ Wiktionary (new tab)")
+    dialog_over_reading(f, "P-42b", "Dictionary Lookup", 520, 330, body)
 
 
 def p42c(f):
@@ -1513,5 +1515,5 @@ def build(new):
     f = new("P-42c_SavedFlashcards"); p42c(f); f.save()
     f = new("P-42d_FloatingNotes"); p42d(f); f.save()
     f = new("P-43_ListeningPractice"); p43_catalog(f); p43_mode_select(f); p43_reading(f); p43_reading_exam(f); p43_reading_result(f); p43_reading_result_high(f); p43_reading_explanation(f); p43(f); p43_listening_exam(f); p43_listening_result(f); p43_listening_result_top(f); p43_listening_explanation(f); p43_writing_mode_select(f); p43_writing(f); p43_writing_grade_confirm(f); p43_writing_not_enough_points(f); p43_writing_guided(f); p43_writing_guided_grade_confirm(f); p43_writing_result(f); f.save()
-    f = new("P-44_WritingPractice"); p44(f); f.save()
+    f = new("P-44_WritingPractice"); p44(f); screens_exam_account.writing_three_columns(f); f.save()
     f = new("P-44a_WritingChartZoom"); p44a(f); f.save()

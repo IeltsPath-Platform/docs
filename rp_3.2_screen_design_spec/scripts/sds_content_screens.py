@@ -454,7 +454,7 @@ for pid, desc, zones, inter in (
       ("C", "Errors “Nhập từ vựng và nghĩa trước khi lưu.” / “Không lưu được: bộ nhớ đầy…”; button “Lưu Flashcard”.")],
      [("“Lưu Flashcard”", "Writes to localStorage; P-42 shows “Đã lưu Flashcard trên trình duyệt này. Mở “Thẻ đã lưu” để xem.”", "FT-43"), ("Close", "Back to P-42", "")]),
     ("P-42b", "Look up the selected word in the passage glossary; Wiktionary link.",
-     [("A", "“Tra từ vựng” · “Từ điển nhỏ của bài đọc. Có thể tra cứu thêm trên Wiktionary.”"),
+     [("A", "“Tra từ vựng” · “Tra Anh-Việt” · “Từ điển nhỏ của bài đọc. Có thể tra cứu thêm trên Wiktionary.”"),
       ("B", "Selected word + meaning; not found: “Chưa có nghĩa trong từ điển của bài…”"), ("C", "Wiktionary link (new tab).")],
      [("Open Wiktionary", "New tab", "noopener"), ("Close", "Back to P-42", "")]),
     ("P-42c", "View flashcards saved in this browser.",
