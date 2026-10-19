@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 720" width="1800" height="720" font-family="Be Vietnam Pro, Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b59d9"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c9432f"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b7694"/></marker>
+  </defs>
+  <rect width="1800" height="720" fill="#f7f6f1"/>
+
+  <!-- Title -->
+  <text x="40" y="44" font-size="15" font-weight="700" letter-spacing="2" fill="#2b59d9">HIỆN TRẠNG · AS-IS</text>
+  <text x="40" y="94" font-size="40" font-weight="600" font-family="Lora, Georgia, serif" fill="#0c1b4d">Học viên tự luyện hiện nay tại IELTS Space</text>
+
+  <!-- Lanes -->
+  <rect x="40" y="130" width="1720" height="270" fill="#f9faff" stroke="#d5dbee"/>
+  <rect x="40" y="400" width="1720" height="220" fill="#ffffff" stroke="#d5dbee"/>
+  <rect x="40" y="130" width="150" height="270" fill="#0c1b4d"/>
+  <rect x="40" y="400" width="150" height="220" fill="#0c1b4d"/>
+  <text x="115" y="265" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">Học viên</text>
+  <text x="115" y="500" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">Giáo viên</text>
+  <text x="115" y="522" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">IELTS Space</text>
+
+  <!-- Connectors (blue) -->
+  <g stroke="#2b59d9" stroke-width="2" fill="none" marker-end="url(#ab)">
+    <path d="M375,510 H415"/>
+    <path d="M500,475 V305"/>
+    <path d="M585,270 H635"/>
+    <path d="M805,270 H855"/>
+    <path d="M1025,270 H1065"/>
+    <path d="M1160,330 V475"/>
+  </g>
+  <!-- Loop back each lesson (grey dashed) -->
+  <path d="M1075,510 H585" stroke="#6b7694" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#ag)"/>
+  <!-- Red exits -->
+  <g stroke="#c9432f" stroke-width="2" fill="none" marker-end="url(#ar)">
+    <path d="M1255,270 H1325"/>
+    <path d="M1510,270 H1545"/>
+  </g>
+
+  <!-- Connector labels -->
+  <text x="512" y="395" font-size="14" fill="#2b59d9" font-weight="600">Giao tài liệu</text>
+  <text x="1172" y="380" font-size="14" fill="#2b59d9" font-weight="600">Còn lớp: quay lại buổi học sau</text>
+  <text x="830" y="498" font-size="14" fill="#6b7694" text-anchor="middle" font-style="italic">lặp lại mỗi buổi học cho đến hết lớp</text>
+  <text x="1290" y="258" font-size="14" fill="#c9432f" font-weight="600" text-anchor="middle">Hết lớp</text>
+
+  <!-- Teacher boxes -->
+  <g fill="#eef2ff" stroke="#2b59d9" stroke-width="2">
+    <rect x="195" y="475" width="180" height="70" rx="10"/>
+    <rect x="415" y="475" width="170" height="70" rx="10"/>
+    <rect x="1075" y="475" width="170" height="70" rx="10"/>
+  </g>
+  <g font-size="16" font-weight="600" fill="#0c1b4d" text-anchor="middle">
+    <text x="285" y="505">Dạy trên lớp</text><text x="285" y="527">theo band</text>
+    <text x="500" y="505">Phát tài liệu</text><text x="500" y="527">giữa các buổi</text>
+    <text x="1160" y="505">Dạy buổi học</text><text x="1160" y="527">tiếp theo</text>
+  </g>
+
+  <!-- Learner boxes -->
+  <g fill="#eef2ff" stroke="#2b59d9" stroke-width="2">
+    <rect x="415" y="235" width="170" height="70" rx="10"/>
+    <rect x="635" y="235" width="170" height="70" rx="10" stroke-dasharray="7 4"/>
+    <rect x="855" y="235" width="170" height="70" rx="10"/>
+    <rect x="1325" y="235" width="185" height="70" rx="10"/>
+  </g>
+  <g font-size="16" font-weight="600" fill="#0c1b4d" text-anchor="middle">
+    <text x="500" y="265">Tự làm tài liệu</text><text x="500" y="287">phát tay</text>
+    <text x="720" y="258">Làm thêm đề trên</text><text x="720" y="279">web miễn phí</text>
+    <text x="940" y="265">Tự đoán điểm yếu,</text><text x="940" y="287">chọn bài ôn</text>
+    <text x="1417" y="265">Hết lớp, chờ</text><text x="1417" y="287">lớp band mới</text>
+  </g>
+  <text x="720" y="297" font-size="12" fill="#6b7694" text-anchor="middle" font-style="italic">(web bên ngoài trung tâm)</text>
+
+  <!-- Decision -->
+  <polygon points="1160,210 1255,270 1160,330 1065,270" fill="#fdf3dd" stroke="#e0a13a" stroke-width="2"/>
+  <g font-size="16" font-weight="600" fill="#8a5a10" text-anchor="middle">
+    <text x="1160" y="265">Còn lớp</text><text x="1160" y="286">đang học?</text>
+  </g>
+
+  <!-- End node -->
+  <rect x="1545" y="225" width="205" height="90" rx="14" fill="#0c1b4d"/>
+  <g font-size="16" font-weight="600" fill="#fff" text-anchor="middle">
+    <text x="1647" y="257">Mất nhịp, vào lớp mới</text><text x="1647" y="279">phải khởi động lại</text>
+  </g>
+
+  <!-- Pain pills -->
+  <g fill="#fbeae6" stroke="#c9432f" stroke-width="1.2">
+    <rect x="412" y="172" width="176" height="46" rx="10"/>
+    <rect x="620" y="172" width="200" height="46" rx="10"/>
+    <rect x="852" y="172" width="176" height="46" rx="10"/>
+    <rect x="1322" y="172" width="190" height="46" rx="10"/>
+  </g>
+  <g font-size="13.5" font-weight="700" fill="#c9432f" text-anchor="middle">
+    <text x="500" y="192">Không chấm ngay,</text><text x="500" y="209">không giải thích</text>
+    <text x="720" y="192">Chỉ hiện điểm; không khớp</text><text x="720" y="209">band và nội dung lớp</text>
+    <text x="940" y="192">Không biết yếu</text><text x="940" y="209">kiến thức nào</text>
+    <text x="1417" y="192">Không có nội dung</text><text x="1417" y="209">để luyện</text>
+  </g>
+
+  <!-- Legend -->
+  <g font-size="14" fill="#44506f">
+    <rect x="40" y="650" width="26" height="16" rx="4" fill="#fbeae6" stroke="#c9432f"/>
+    <text x="76" y="663"><tspan font-weight="700" fill="#c9432f">Chữ đỏ</tspan>: điểm đau của học viên</text>
+    <rect x="380" y="650" width="26" height="16" rx="4" fill="#eef2ff" stroke="#2b59d9" stroke-dasharray="4 3"/>
+    <text x="416" y="663">Nét đứt: công cụ bên ngoài trung tâm (hộp đen, không đi sâu)</text>
+    <line x1="900" y1="658" x2="940" y2="658" stroke="#6b7694" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="950" y="663">Vòng lặp theo từng buổi học</text>
+  </g>
+</svg>
